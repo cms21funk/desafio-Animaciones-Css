@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMERCIAL LA FAMILIA</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://kit.fontawesome.com/5100cf096a.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <img src="assets/img/empresa/logoMarket.png" alt="Logo" class="logo-flag">
+            <h1>COMERCIAL LA FAMILIA</h1>
+            <nav class="nav">
+                <ul id="nav-links">
+                    <li><a href="#" data-page="assets/pages/inicio.html">Inicio</a></li>
+                    <li><a href="#" data-page="assets/pages/ofertas.html">Ofertas</a></li>
+                    <li><a href="#" data-page="assets/pages/contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+        </header>
+        <aside class="sidebar">
+            <h3>CATEGORÍAS</h3>
+            <ul id="sidebar-links">
+                <li><a href="#" data-page="assets/pages/despensa.html">Despensa</a></li>
+                <li><a href="#" data-page="assets/pages/desayuno.html">Desayuno</a></li>
+                <li><a href="#" data-page="assets/pages/bebestibles.html">Bebestibles</a></li>
+                <li><a href="#" data-page="assets/pages/congelados.html">Congelados</a></li>
+                <li><a href="#" data-page="assets/pages/aseo.html">Aseo</a></li>
+            </ul>
+            <ul id="sidebar-download">
+                <li><a href="./assets/doc/Catalogo2024.pdf" target="_blank">Catálogo <i class="fa-solid fa-download"></i></a></li>
+            </ul>
+        </aside>
+        <main class="main-content" id="main-content">
+        </main>
+        <footer class="footer">
+            <div class="social-contact">
+                <p><i class="fa-brands fa-instagram"></i> 
+                    <a href="https://www.instagram.com/co.lafamilia" target="_blank" class="social-link">@co.lafamilia</a>
+                </p>
+                <p><i class="fa-brands fa-whatsapp"></i> +56 9 6725 7854</p>
+            </div>
+            <p>Comercial La Familia 2024 - Todos los derechos reservados</p>
+        </footer>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const links = document.querySelectorAll('#nav-links a, #sidebar-links a');
+            links.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault(); 
+                    const page = this.getAttribute('data-page'); 
+                    loadPage(page);
+                });
+            });
+
+            function loadPage(page) {
+                fetch(page)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Error al cargar la página');
+                        }
+                        return response.text();
+                    })
+                    .then(html => {
+                        document.getElementById('main-content').innerHTML = html;
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        document.getElementById('main-content').innerHTML = '<p>Hubo un problema al cargar la página.</p>';
+                    });
+            }
+            // Carga la página de inicio por defecto
+            loadPage('assets/pages/inicio.html');  
+        });
+    </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>    
+</body>
+</html>
+
+
+
+
+
+
+
+
